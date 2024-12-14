@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiWallet.Views.SignUpStep2Page"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiWallet.Controls"
+    xmlns:handlers="clr-namespace:MauiWallet.Handlers"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    Title=""
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <!--  Back Button  -->
+        <Image
+            Margin="16,20"
+            HeightRequest="30"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="GoBack_Tapped" />
+            </Image.GestureRecognizers>
+            <Image.Source>
+                <FontImageSource
+                    FontFamily="MauiKitIcons"
+                    Glyph="{x:Static views:MauiKitIcons.ArrowLeft}"
+                    Size="25"
+                    Color="{DynamicResource BaseIconColor}" />
+            </Image.Source>
+        </Image>
+
+        <StackLayout
+            Margin="30"
+            Spacing="20"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout HorizontalOptions="Center" Spacing="10">
+                <Border
+                     Padding="0"
+                     HeightRequest="90"
+                     HorizontalOptions="Center"
+                     Stroke="{DynamicResource White}"
+                     StrokeShape="{RoundRectangle CornerRadius=16}"
+                     StrokeThickness="3"
+                     WidthRequest="90">
+                     <Image
+                         HeightRequest="70"
+                         HorizontalOptions="Center"
+                         Source="iconostarbank.png"
+                         VerticalOptions="Center" />
+                </Border>
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource Title2}"
+                    Text="Verificar Correo" />
+                <Label
+                    HorizontalTextAlignment="Start"
+                     FontSize="16"
+                    Style="{StaticResource PrimaryLabel}"
+                    Text="Le enviamos un código de 6 dígitos a su correo electrónico" />
+                <Label
+                     x:Name="entryCorreo"
+                     FontAttributes="Bold"
+                     FontSize="15"
+                     HorizontalOptions="Center"
+                     HorizontalTextAlignment="Center"
+                     Style="{StaticResource Title2}"
+                     Text="email" />
+            </StackLayout>
+
+            <Grid ColumnSpacing="15" HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{OnIdiom Phone='50', Tablet='80', Desktop='120'}" />
+                    <ColumnDefinition Width="{OnIdiom Phone='50', Tablet='80', Desktop='120'}" />
+                    <ColumnDefinition Width="{OnIdiom Phone='50', Tablet='80', Desktop='120'}" />
+                    <ColumnDefinition Width="{OnIdiom Phone='50', Tablet='80', Desktop='120'}" />
+                    <ColumnDefinition Width="{OnIdiom Phone='50', Tablet='80', Desktop='120'}" />
+                    <ColumnDefinition Width="{OnIdiom Phone='50', Tablet='80', Desktop='120'}" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="{DynamicResource BasePageColor}"
+                    HeightRequest="60"
+                    Stroke="{DynamicResource DefaultBorder}"
+                    StrokeThickness="1"
+                    WidthRequest="{OnIdiom Phone='50',
+                                           Tablet='80',
+                                           Desktop='120'}">
+                    <handlers:BorderlessEntry
+                        x:Name="OTPNumber1"
+                        Margin="8,0"
+                        BackgroundColor="{DynamicResource BasePageColor}"
+                        FontFamily="BoldFont"
+                        FontSize="20"
+                        HeightRequest="60"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        MaxLength="1"
+                        toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference SecondOTPNumber}"
+                        ReturnType="Next"
+                        Placeholder=""
+                        PlaceholderColor="{DynamicResource BaseTextColor}" />
+                </Border>
+
+                <Border
+                    Grid.Column="1"
+    Margin="0"
+    Padding="0"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    HeightRequest="60"
+    Stroke="{DynamicResource DefaultBorder}"
+    StrokeThickness="1"
+    WidthRequest="{OnIdiom Phone='50',
+                           Tablet='80',
+                           Desktop='120'}">
+                    <handlers:BorderlessEntry
+        x:Name="OTPNumber2"
+        Margin="8,0"
+        BackgroundColor="{DynamicResource BasePageColor}"
+        FontFamily="BoldFont"
+        FontSize="20"
+        HeightRequest="60"
+        HorizontalOptions="FillAndExpand"
+        HorizontalTextAlignment="Center"
+        Keyboard="Numeric"
+        MaxLength="1"
+        toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference SecondOTPNumber}"
+        ReturnType="Next"
+        Placeholder=""
+        PlaceholderColor="{DynamicResource BaseTextColor}" />
+                </Border>
+
+                <Border
+                    Grid.Column="2"
+    Margin="0"
+    Padding="0"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    HeightRequest="60"
+    Stroke="{DynamicResource DefaultBorder}"
+    StrokeThickness="1"
+    WidthRequest="{OnIdiom Phone='50',
+                           Tablet='80',
+                           Desktop='120'}">
+                    <handlers:BorderlessEntry
+        x:Name="OTPNumber3"
+        Margin="8,0"
+        BackgroundColor="{DynamicResource BasePageColor}"
+        FontFamily="BoldFont"
+        FontSize="20"
+        HeightRequest="60"
+        HorizontalOptions="FillAndExpand"
+        HorizontalTextAlignment="Center"
+        Keyboard="Numeric"
+        MaxLength="1"
+        toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference SecondOTPNumber}"
+        ReturnType="Next"
+        Placeholder=""
+        PlaceholderColor="{DynamicResource BaseTextColor}" />
+                </Border>
+
+                <Border
+                    Grid.Column="3"
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="{DynamicResource BasePageColor}"
+                    HeightRequest="60"
+                    Stroke="{DynamicResource DefaultBorder}"
+                    StrokeThickness="1"
+                    WidthRequest="{OnIdiom Phone='50',
+                                           Tablet='80',
+                                           Desktop='120'}">
+                    <handlers:BorderlessEntry
+                        x:Name="OTPNumber4"
+                        Margin="8,0"
+                        BackgroundColor="{DynamicResource BasePageColor}"
+                        FontFamily="BoldFont"
+                        FontSize="20"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        MaxLength="1"
+                        toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference ThirdOTPNumber}"
+                        ReturnType="Next"
+                        Placeholder=""
+                        PlaceholderColor="{DynamicResource BaseTextColor}" />
+                </Border>
+
+                <Border
+                    Grid.Column="4"
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="{DynamicResource BasePageColor}"
+                    HeightRequest="60"
+                    Stroke="{DynamicResource DefaultBorder}"
+                    StrokeThickness="1"
+                    WidthRequest="{OnIdiom Phone='50',
+                                           Tablet='80',
+                                           Desktop='120'}">
+                    <handlers:BorderlessEntry
+                        x:Name="OTPNumber5"
+                        Margin="8,0"
+                        BackgroundColor="{DynamicResource BasePageColor}"
+                        FontFamily="BoldFont"
+                        FontSize="20"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        MaxLength="1"
+                        toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{x:Reference FourthOTPNumber}"
+                        ReturnType="Next"
+                        Placeholder=""
+                        PlaceholderColor="{DynamicResource BaseTextColor}" />
+                </Border>
+
+                <Border
+                    Grid.Column="5"
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="{DynamicResource BasePageColor}"
+                    HeightRequest="60"
+                    Stroke="{DynamicResource DefaultBorder}"
+                    StrokeThickness="1"
+                    WidthRequest="{OnIdiom Phone='50',
+                                           Tablet='80',
+                                           Desktop='120'}">
+                    <handlers:BorderlessEntry
+                        x:Name="OTPNumber6"
+                        Margin="8,0"
+                        BackgroundColor="{DynamicResource BasePageColor}"
+                        FontFamily="BoldFont"
+                        FontSize="20"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        MaxLength="1"
+                        ReturnType="Done"
+                        Placeholder=""
+                        PlaceholderColor="{DynamicResource BaseTextColor}" />
+                </Border>
+            </Grid>
+
+            <Button
+                Margin="0,15"
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                Clicked="ContinueButton_Clicked"
+                CornerRadius="14"
+                HeightRequest="50"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{localization:Translate ButtonContinue}" />
+
+            <Label
+                Margin="0,0,0,20"
+                FontFamily="RegularFont"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="End">          
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontFamily="RegularFont" Text="No ha recibido el código?" />
+                        <Span Text="  " />
+                        <Span
+                            FontAttributes="Bold"
+                            FontFamily="RegularFont"
+                            Text="Reenviar"
+                            TextColor="{DynamicResource PrimaryColor}"> 
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ReenviarButton_Clicked" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

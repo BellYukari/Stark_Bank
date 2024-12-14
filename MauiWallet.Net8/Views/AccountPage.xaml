@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiWallet.Views.AccountPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    x:Name="profilePage">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto">
+
+            <Grid>
+                <StackLayout Margin="20,15,20,0">
+                    <Border
+                        Grid.Column="0"
+                        Background="Transparent"
+                        HorizontalOptions="Center"
+                        Stroke="{DynamicResource PrimaryColor}"
+                        StrokeShape="RoundRectangle 40"
+                        StrokeThickness="0">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="80"
+                            x:Name="entryAvatar"  
+                            WidthRequest="80" />
+                    </Border>
+
+                    <StackLayout Margin="20,10">
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource Title2}"
+                            x:Name="entryUsername"                            
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            x:Name="entryEmail"  
+                            TextColor="{DynamicResource PrimaryColor}"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </StackLayout>
+
+                <!--  Cierre de sesión  -->
+                <HorizontalStackLayout
+                    Margin="0,20"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Label
+                        FontFamily="MaterialDesign"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="{x:Static views:MaterialDesignIcons.ExitToApp}"
+                        TextColor="{DynamicResource Red}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Margin="12,0"
+                        Style="{StaticResource Footnote}"
+                        Text="Cerrar Sesión "
+                        TextColor="{DynamicResource BaseTextColor}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Logout_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    
+
+                </HorizontalStackLayout>
+            </Grid>
+
+            <!--  OPCIONES  -->
+            <StackLayout Grid.Row="1" Margin="20,10">
+                <Label
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Subhead}"
+                    Text="{localization:Translate StringAccountOption}"
+                    TextColor="{DynamicResource BaseLightTextColor}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <StackLayout
+                    Margin="0,5"
+                    BackgroundColor="{DynamicResource BaseSeparatorColor}"
+                    HeightRequest="0.5"
+                    VerticalOptions="FillAndExpand" />
+
+                <!--  Actualizar perfil  -->
+                <Grid Padding="0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        FontFamily="MauiKitIcons"
+                        FontSize="22"
+                        HorizontalOptions="Start"
+                        Text="{x:Static views:MauiKitIcons.AccountEdit}"
+                        TextColor="{DynamicResource PrimaryColor}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="{localization:Translate StringUpdateProfile}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        FontFamily="IonIcons"
+                        FontSize="15"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static views:IonIcons.ChevronRight}"
+                        TextColor="{DynamicResource BaseIconColor}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding UpdateAccountCommand}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <StackLayout
+                    Margin="0,5"
+                    BackgroundColor="{DynamicResource BaseSeparatorColor}"
+                    HeightRequest="0.5"
+                    VerticalOptions="FillAndExpand" />
+
+
+                <!--  Política de privacidad  -->
+                <Grid Padding="0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        FontFamily="MauiKitIcons"
+                        FontSize="22"
+                        HorizontalOptions="Start"
+                        Text="{x:Static views:MauiKitIcons.Security}"
+                        TextColor="{DynamicResource PrimaryColor}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="{localization:Translate StringPrivacyPolicy}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        FontFamily="IonIcons"
+                        FontSize="15"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static views:IonIcons.ChevronRight}"
+                        TextColor="{DynamicResource BaseIconColor}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GotoPrivacyCommand}" />
+                    </Grid.GestureRecognizers>
+                </Grid> 
+
+                <StackLayout
+                    Margin="0,5"
+                    BackgroundColor="{DynamicResource BaseSeparatorColor}"
+                    HeightRequest="0.5"
+                    VerticalOptions="FillAndExpand" />
+
+                <StackLayout
+                    Margin="0,5"
+                    BackgroundColor="{DynamicResource BaseSeparatorColor}"
+                    HeightRequest="0.5"
+                    VerticalOptions="FillAndExpand" />
+            </StackLayout>
+
+            <!--  SETTINGS  -->
+            <StackLayout
+                Grid.Row="2"
+                Margin="20,10"
+                Spacing="5"
+                VerticalOptions="Fill">
+                <Label
+                    Style="{StaticResource Subhead}"
+                    Text="{localization:Translate StringAppSettings}"
+                    TextColor="{DynamicResource BaseLightTextColor}"
+                    VerticalOptions="End"
+                    VerticalTextAlignment="End" />
+
+                <StackLayout
+                    Margin="0,5"
+                    BackgroundColor="{DynamicResource BaseSeparatorColor}"
+                    HeightRequest="0.5"
+                    VerticalOptions="FillAndExpand" />
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="{localization:Translate StringDarkmode}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+                    <Switch
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding DarkModeSwitchToggled}" />
+                </Grid>
+
+                <!--<Rectangle
+                    Fill="{DynamicResource BaseSeparatorColor}"
+                    HeightRequest="0.5"
+                    VerticalOptions="FillAndExpand" />
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="{localization:Translate StringFaceIdLogin}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+                    <Switch
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        IsToggled="True" />
+                </Grid>
+
+                <Rectangle
+                    Fill="{DynamicResource BaseSeparatorColor}"
+                    HeightRequest="0.5"
+                    VerticalOptions="FillAndExpand" />
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="{localization:Translate StringEnableLocation}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+                    <Switch Grid.Column="1" HorizontalOptions="End" />
+                </Grid>
+
+                <Rectangle Fill="{DynamicResource BaseSeparatorColor}" HeightRequest="1" />-->
+
+
+
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

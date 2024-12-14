@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiWallet.Views.SignUpStep1Page"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiWallet.Controls"
+    xmlns:handlers="clr-namespace:MauiWallet.Handlers"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    Title=""
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <!--  Back Button  -->
+        <Image
+            Margin="16,20"
+            HeightRequest="30"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="GoBack_Tapped" />
+            </Image.GestureRecognizers>
+            <Image.Source>
+                <FontImageSource
+                    FontFamily="MauiKitIcons"
+                    Glyph="{x:Static views:MauiKitIcons.ArrowLeft}"
+                    Size="22"
+                    Color="{DynamicResource BaseIconColor}" />
+            </Image.Source>
+        </Image>
+
+        <StackLayout
+            Margin="30"
+            Spacing="20"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout HorizontalOptions="Center" Spacing="10">
+                <!--  <Border
+                     Padding="0"
+                     HeightRequest="90"
+                     HorizontalOptions="Center"
+                     Stroke="{DynamicResource White}"
+                     StrokeShape="{RoundRectangle CornerRadius=16}"
+                     StrokeThickness="3"
+                     WidthRequest="90">
+                   <Image
+                         HeightRequest="70"
+                         HorizontalOptions="Center"
+                         Source="iconostarbank.png"
+                         VerticalOptions="Center" /> 
+                </Border> -->
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource Title2}"
+                    Text="Regístrarse" />
+                <Label
+
+                    Style="{StaticResource PrimaryLabel}"
+                    Text="Bienvenido a Star Bank, crea tu cuenta aqui" />
+            </StackLayout>
+
+            <Border
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{DynamicResource BasePageColor}"
+                HeightRequest="52"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout
+                    Margin="16,2"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        FontFamily="MauiKitIcons"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static views:MauiKitIcons.Account}"
+                        TextColor="{DynamicResource BaseIconColor}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <handlers:BorderlessEntry
+                        Margin="8,0"
+                        x:Name="entryCorreo"
+                        FontFamily="RegularFont"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Default"
+                        Placeholder="Ingrese su correo"
+                        PlaceholderColor="{DynamicResource BaseTextColor}">
+                        <handlers:BorderlessEntry.Behaviors>
+                            <toolkit:EmailValidationBehavior
+                                Flags="ValidateOnValueChanged"
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{StaticResource ValidEntryStyle}" />
+                        </handlers:BorderlessEntry.Behaviors>
+                    </handlers:BorderlessEntry>
+                </StackLayout>
+            </Border>
+
+            <Button
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                Clicked="ContinueButton_Clicked"
+                CornerRadius="14"
+                HeightRequest="50"
+                Text="{localization:Translate ButtonContinue}"
+                TextColor="{DynamicResource White}" />
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

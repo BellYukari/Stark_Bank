@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiWallet.Views.ExchangeRatePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiWallet.Controls"
+    xmlns:handlers="clr-namespace:MauiWallet.Handlers"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    Title="Tipo de Cambio"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <!--  Back Button  -->
+        <Image
+            Margin="16,20"
+            HeightRequest="30"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="GoBack_Tapped" />
+            </Image.GestureRecognizers>
+            <Image.Source>
+                <FontImageSource
+                    FontFamily="MauiKitIcons"
+                    Glyph="{x:Static views:MauiKitIcons.ArrowLeft}"
+                    Size="22"
+                    Color="{DynamicResource BaseIconColor}" />
+            </Image.Source>
+        </Image>
+        
+        
+
+        <StackLayout
+            Margin="30"
+            Spacing="20"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout HorizontalOptions="Center" Spacing="10">
+
+
+                <Border
+                    Padding="0"
+                    HeightRequest="90"
+                    HorizontalOptions="Center"
+                    Stroke="{DynamicResource White}"
+                    StrokeShape="{RoundRectangle CornerRadius=16}"
+                    StrokeThickness="3"
+                    WidthRequest="90">
+                    <Image
+                        HeightRequest="70"
+                        HorizontalOptions="Center"
+                        Source="iconostarbank.png"
+                        VerticalOptions="Center" />
+                </Border>
+
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource Title2}"
+                    Text="Tipo de Cambio" />
+                <Label
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource PrimaryLabel}"
+                    Text="Digite el monto que desea convertir" />
+            </StackLayout>
+
+            <Border
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{DynamicResource BasePageColor}"
+                HeightRequest="52"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout
+                    Margin="16,2"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        FontFamily="MauiKitIcons"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static views:MauiKitIcons.Cash}"
+                        TextColor="{DynamicResource BaseIconColor}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <handlers:BorderlessEntry
+                        Margin="8,0"
+                        x:Name="txtLempiras"
+                        FontFamily="RegularFont"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Default"
+                        Placeholder="0.00"
+                        PlaceholderColor="{DynamicResource BaseTextColor}">
+                        <handlers:BorderlessEntry.Behaviors>
+                            <toolkit:EmailValidationBehavior
+                                Flags="ValidateOnValueChanged"
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{StaticResource ValidEntryStyle}" />
+                        </handlers:BorderlessEntry.Behaviors>
+                    </handlers:BorderlessEntry>
+                </StackLayout>
+            </Border>
+
+            <Label
+    HorizontalOptions="Start"
+    HorizontalTextAlignment="Center"
+    Style="{StaticResource PrimaryLabel}"
+                x:Name="lblDolares"
+    Text="" />
+
+            <Border
+    Margin="0"
+    Padding="0"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    HeightRequest="52"
+    HorizontalOptions="FillAndExpand">
+                <StackLayout
+        Margin="16,2"
+        Orientation="Horizontal"
+        VerticalOptions="CenterAndExpand">
+                    <Label
+            FontFamily="MauiKitIcons"
+            FontSize="22"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{x:Static views:MauiKitIcons.Cash}"
+            TextColor="{DynamicResource BaseIconColor}"
+            VerticalOptions="CenterAndExpand" />
+
+                    <handlers:BorderlessEntry
+            Margin="8,0"
+            x:Name="txtDolares"
+            FontFamily="RegularFont"
+            HeightRequest="50"
+            HorizontalOptions="FillAndExpand"
+            Keyboard="Default"
+            Placeholder="0.00"
+                        
+                        IsEnabled="False"
+            PlaceholderColor="{DynamicResource BaseTextColor}">
+                        <handlers:BorderlessEntry.Behaviors>
+                            <toolkit:EmailValidationBehavior
+                    Flags="ValidateOnValueChanged"
+                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                    ValidStyle="{StaticResource ValidEntryStyle}" />
+                        </handlers:BorderlessEntry.Behaviors>
+                    </handlers:BorderlessEntry>
+                </StackLayout>
+            </Border>
+
+            <Button
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                Clicked="DollarsToLempiras_Clicked"
+                CornerRadius="14"
+                HeightRequest="50"
+                Text="Convertir Dolar a LPS"
+                TextColor="{DynamicResource White}" />
+
+            <Button
+                BackgroundColor="{DynamicResource BaseIconColor}"
+                Clicked="LempirasToDollars_Clicked"
+                CornerRadius="14"
+                HeightRequest="50"
+                Text="Convertir LPS a Dolar"
+                TextColor="{DynamicResource White}" />
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

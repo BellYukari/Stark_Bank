@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiWallet.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiWallet.Controls"
+    xmlns:handlers="clr-namespace:MauiWallet.Handlers"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!--  Back Button  -->
+          
+
+            <Grid Grid.Row="1" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <VerticalStackLayout
+                    Padding="0"
+                    HorizontalOptions="CenterAndExpand"
+                    Spacing="0"
+                    VerticalOptions="EndAndExpand">
+
+                    
+                    <Image
+                            HeightRequest="90"
+                            HorizontalOptions="Center"
+                            Source="logostarbank.png"
+                            VerticalOptions="Center" />
+                    
+                        <Label
+                        FontAttributes="Bold"
+                        FontSize="19"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource Title1}"/>
+                                
+                 </VerticalStackLayout>
+                
+
+                <!--  Header  -->
+                
+
+                <!--  Main Login Elements  -->
+                <VerticalStackLayout
+                    Grid.Row="2"
+                    HorizontalOptions="Fill"
+                    Spacing="20"
+                    VerticalOptions="CenterAndExpand">
+
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MauiKitIcons"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:MauiKitIcons.Account}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Margin="8,0"
+                                BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                FontFamily="RegularFont"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                x:Name="usernameEntry"
+                                Placeholder="{localization:Translate StringEnterUsername}"
+                                PlaceholderColor="{DynamicResource BaseLightTextColor}" />
+                        </StackLayout>
+                    </Border>
+
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MauiKitIcons"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:MauiKitIcons.Lock}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Margin="8,0"
+                                BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                FontFamily="RegularFont"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                IsPassword="True"
+                                Keyboard="Default"
+                                x:Name="passwordEntry"
+                                Placeholder="{localization:Translate StringEnterPassword}"
+                                PlaceholderColor="{DynamicResource BaseLightTextColor}" />
+                        </StackLayout>
+                    </Border>
+
+
+                    <Button
+                        Margin="0,30,0,0"
+                        BorderWidth="0"
+                        Clicked="SigninButton_Clicked"
+                        FontFamily="MediumFont"
+                        FontSize="16"
+                        HeightRequest="50"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{localization:Translate ButtonSignin}" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{localization:Translate StringForgotPassword}"
+                        TextColor="{DynamicResource PrimaryColor}"
+                        VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ForgotPassword_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    
+
+                </VerticalStackLayout>
+
+                <!--  Socials Login  -->
+                <VerticalStackLayout Grid.Row="4" Spacing="20">
+                    
+                    <StackLayout
+                        
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="25">
+ 
+                      
+                        <!-- <Border
+                            
+                            Padding="20,10"
+                            BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                            Stroke="{DynamicResource DefaultBorder}"
+                            StrokeShape="{RoundRectangle CornerRadius='8'}"
+                            StrokeThickness="1">                      
+
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                Source="huella.png"
+                                VerticalOptions="Center" >
+                                    <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ValidateBiometric_Clicked" NumberOfTapsRequired="1"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Border>-->
+
+                        
+                    </StackLayout>
+                </VerticalStackLayout>
+
+                <!--  Sign Up  -->
+                <Label
+                    Grid.Row="5"
+                    Margin="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="End">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Signup_Tapped" />
+                    </Label.GestureRecognizers>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="RegularFont"
+                                Text="{localization:Translate StringDontHaveAccount}"
+                                TextColor="{DynamicResource BaseLightTextColor}" />
+                            <Span Text="  " />
+                            <Span
+                                FontFamily="SemiBoldFont"
+                                FontSize="16"
+                                Text="{localization:Translate StringSignup}"
+                                TextColor="{DynamicResource PrimaryColor}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
+                
+            </Grid>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

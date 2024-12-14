@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiWallet.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiWallet"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    x:Name="thisShell">
+   
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NotificationIconColor">#6E6E6E</Color>
+            <Color x:Key="ThemeIconColor">#6E6E6E</Color>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <Shell.TitleView>
+        <Grid
+            Padding="16,10"
+            ColumnDefinitions="*, Auto, Auto"
+            ColumnSpacing="20">
+
+            <Label
+                Text="{Binding Source={x:Reference thisShell}, Path=CurrentItem.Title}"
+                TextColor="{DynamicResource BaseTextColor}"
+                VerticalOptions="Center" />
+
+            <!--  Notificaciones  -->
+            <Image Grid.Column="1">
+                <Image.Source>
+                    <FontImageSource
+                        FontAutoScalingEnabled="True"
+                        FontFamily="IonIcons"
+                        Glyph="{x:Static views:IonIcons.AndroidNotifications}"
+                        Color="{StaticResource NotificationIconColor}" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNotification_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+
+        </Grid>
+    </Shell.TitleView>
+
+    <TabBar>
+        <Tab Title="Inicio">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="MauiKitIcons"
+                    Glyph="{x:Static views:MauiKitIcons.HomeVariantOutline}"
+                    Size="25"
+                    Color="{DynamicResource BaseTextColor}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
+        </Tab>
+
+        <Tab Title="Estadistica">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="MauiKitIcons"
+                    Glyph="{x:Static views:MauiKitIcons.ViewDashboardOutline}"
+                    Size="25"
+                    Color="{DynamicResource BaseTextColor}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:StatisticsPage}" />
+        </Tab>
+
+        <Tab Title="Pagos">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="MauiKitIcons"
+                    Glyph="{x:Static views:MauiKitIcons.Send}"
+                    Size="25"
+                    Color="{DynamicResource BaseTextColor}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:BillPaymentPage}" />
+        </Tab>
+
+        <Tab Title="Perfl">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="MauiKitIcons"
+                    Glyph="{x:Static views:MauiKitIcons.AccountOutline}"
+                    Size="25"
+                    Color="{DynamicResource BaseTextColor}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:AccountPage}" />
+        </Tab>
+    </TabBar>
+    
+    
+</Shell>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<rg:PopupPage
+    x:Class="MauiWallet.Views.ThemeSettingsPopupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:controls="clr-namespace:MauiWallet.Controls"
+    xmlns:enums="clr-namespace:MauiWallet.Enums"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    ios:Page.UseSafeArea="True"
+    BackgroundInputTransparent="False">
+
+    <rg:PopupPage.Animation>
+        <animation:MoveAnimation PositionIn="Right" PositionOut="Right" />
+    </rg:PopupPage.Animation>
+
+    <rg:PopupPage.Resources />
+
+    <Border
+        x:Name="MainContent"
+        Margin="{OnIdiom Phone='0,20,-1,0',
+                         Tablet='0,20,-1,0',
+                         Desktop='0,80,-1,0'}"
+        Background="{DynamicResource BasePageColor}"
+        HorizontalOptions="{OnIdiom Phone='End',
+                                    Tablet='End',
+                                    Desktop='End'}"
+        Opacity="1"
+        Stroke="{DynamicResource BasePageColor}"
+        StrokeShape="{RoundRectangle CornerRadius={OnIdiom Phone='20,0,20,0',
+                                                           Tablet='20,0,20,0',
+                                                           Desktop='20,0,20,0'}}"
+        VerticalOptions="{OnIdiom Phone='Start',
+                                  Tablet='Start',
+                                  Desktop='Start'}"
+        WidthRequest="150">
+
+        <Grid RowDefinitions="Auto, Auto, Auto">
+
+            <!--  Close Icon  -->
+            <Grid
+                Margin="15"
+                HorizontalOptions="Start"
+                VerticalOptions="Center">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseSetting_Tapped" />
+                </Grid.GestureRecognizers>
+                <Label
+                    FontFamily="IonIcons"
+                    FontSize="25"
+                    HorizontalOptions="Center"
+                    Text="{x:Static views:IonIcons.CloseCircled}"
+                    TextColor="{DynamicResource Red}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCloseSetting_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <Label
+                Grid.Row="1"
+                Margin="20,0"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource Subhead}"
+                Text="{localization:Translate StringChooseTheme}" />
+
+            <!--  Primary Color Options  -->
+            <Grid Grid.Row="2" Padding="20">
+
+                <CollectionView
+                    x:Name="colorPaletteCollectionView"
+                    SelectedItem="{Binding SelectedPrimaryColorItem}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Padding="3"
+                                HorizontalOptions="Center"
+                                StrokeThickness="2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+
+                                <RoundRectangle
+                                    CornerRadius="8"
+                                    Fill="{Binding Color}"
+                                    HeightRequest="40"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60" />
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                                    <Setter Property="Stroke" Value="Transparent" />
+                                                    <Setter Property="HeightRequest" Value="50" />
+                                                    <Setter Property="WidthRequest" Value="70" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="{DynamicResource BasePageColor}" />
+                                                    <Setter Property="Stroke" Value="{Binding Color}" />
+                                                    <Setter Property="HeightRequest" Value="55" />
+                                                    <Setter Property="WidthRequest" Value="75" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+        </Grid>
+    </Border>
+
+</rg:PopupPage>

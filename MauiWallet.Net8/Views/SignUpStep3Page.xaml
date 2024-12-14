@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiWallet.Views.SignUpStep3Page"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiWallet.Controls"
+    xmlns:handlers="clr-namespace:MauiWallet.Handlers"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    Title=""
+    BackgroundColor="{DynamicResource BasePageColor}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  Back Button  -->
+            <Image
+                Margin="16,20"
+                HeightRequest="30"
+                HorizontalOptions="Start"
+                VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="GoBack_Tapped" />
+                </Image.GestureRecognizers>
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="MauiKitIcons"
+                        Glyph="{x:Static views:MauiKitIcons.ArrowLeft}"
+                        Size="25"
+                        Color="{DynamicResource BaseIconColor}" />
+                </Image.Source>
+            </Image>
+
+            <Grid Grid.Row="1" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <VerticalStackLayout
+                    Padding="0"
+                    HorizontalOptions="CenterAndExpand"
+                    Spacing="0"
+                    VerticalOptions="EndAndExpand">
+                    <Image
+                        HeightRequest="90"
+                        HorizontalOptions="Center"
+                        Source="logostarbank.png"
+                        VerticalOptions="Center" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="19"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource Title1}"
+                        Text="Crear cuenta" />
+                </VerticalStackLayout>
+                
+                
+
+
+                <!--  Main Sign up Elements  -->
+                <VerticalStackLayout
+                    Grid.Row="2"
+                    HorizontalOptions="Fill"
+                    Spacing="20"
+                    VerticalOptions="CenterAndExpand">
+
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MauiKitIcons"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:MauiKitIcons.Account}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Margin="8,0"
+                                BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                FontFamily="RegularFont"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                Placeholder="Nombre"
+                                x:Name="entryfirstname"
+                                PlaceholderColor="{DynamicResource BaseLightTextColor}" />
+                        </StackLayout>
+                    </Border>
+
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MauiKitIcons"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:MauiKitIcons.Account}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Margin="8,0"
+                                BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                FontFamily="RegularFont"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                Placeholder="Apellido"
+                                x:Name="entrylastname"
+                                PlaceholderColor="{DynamicResource BaseLightTextColor}" />
+                        </StackLayout>
+                    </Border>
+                    
+
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MauiKitIcons"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:MauiKitIcons.Email}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Margin="8,0"
+                                BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                FontFamily="RegularFont"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Default"
+                                Placeholder="Correo"                                
+                                x:Name="entryemail"
+                                IsEnabled="False"
+                                PlaceholderColor="{DynamicResource BaseLightTextColor}" />
+                        </StackLayout>
+                    </Border>
+
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MauiKitIcons"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:MauiKitIcons.Lock}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Margin="8,0"
+                                BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                FontFamily="RegularFont"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                IsPassword="True"
+                                Keyboard="Default"
+                                Placeholder="Contraseña"
+                                x:Name="entrypassword"
+                                PlaceholderColor="{DynamicResource BaseLightTextColor}" />
+                        </StackLayout>
+                    </Border>
+
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MauiKitIcons"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:MauiKitIcons.Lock}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Margin="8,0"
+                                BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                FontFamily="RegularFont"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                IsPassword="True"
+                                Keyboard="Default"
+                                Placeholder="Confirmar contraseña"
+                                x:Name="entrypassword_confirmation"
+                                PlaceholderColor="{DynamicResource BaseLightTextColor}" />
+                        </StackLayout>
+                    </Border>
+
+                    <Border
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                        HeightRequest="52"
+                        HorizontalOptions="FillAndExpand"
+                        Stroke="{DynamicResource EntryAndEditorsBorderColor}">
+                        <StackLayout
+                            Margin="16,2"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MauiKitIcons"
+                                FontSize="22"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static views:MauiKitIcons.Phone}"
+                                TextColor="{DynamicResource BaseIconColor}"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <handlers:BorderlessEntry
+                                Margin="8,0"
+                                BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                FontFamily="RegularFont"
+                                HeightRequest="50"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Numeric"
+                                MaxLength="8"
+                                Placeholder="Telefono"
+                                x:Name="entryphone"
+                                PlaceholderColor="{DynamicResource BaseLightTextColor}" />
+                        </StackLayout>
+                    </Border>
+
+                    <Button
+                        Clicked="SignUpButton_Clicked"
+                        Margin="0,10,0,0"
+                        BorderWidth="0"
+                        FontFamily="MediumFont"
+                        FontSize="16"
+                        HeightRequest="50"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{localization:Translate ButtonSignup}" />
+
+                </VerticalStackLayout>
+
+
+                <!--  Sign In  -->
+                <Label
+                    Grid.Row="5"
+                    Margin="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="End">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Signin_Tapped" />
+                    </Label.GestureRecognizers>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontFamily="RegularFont" Text="{localization:Translate StringAlreadyHaveAccount}" />
+                            <Span Text="  " />
+                            <Span
+                                FontFamily="SemiBoldFont"
+                                FontSize="16"
+                                Text="{localization:Translate StringSignin}"
+                                TextColor="{DynamicResource PrimaryColor}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

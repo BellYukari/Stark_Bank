@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiWallet.Views.MobileTopupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiWallet.Controls"
+    xmlns:helpers="clr-namespace:MauiWallet.Helpers"
+    xmlns:local="clr-namespace:MauiWallet"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:models="clr-namespace:MauiWallet.Models"
+    xmlns:viewmodels="clr-namespace:MauiWallet.ViewModels"
+    xmlns:templates="clr-namespace:MauiWallet.Views.Templates"
+    xmlns:views="clr-namespace:MauiWallet.Views">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            BackgroundColor="{DynamicResource BasePageColor}"
+            Spacing="20">
+            <Grid HeightRequest="240">
+                <Border
+                    Margin="-3,-3"
+                    Padding="20"
+                    BackgroundColor="{DynamicResource PrimaryDarkColor}"
+                    HeightRequest="180"
+                    VerticalOptions="Start">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20,20,40,40" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Label Text="Recargas Mobiles" TextColor="{DynamicResource OverImageTextColor}" />
+                        <Label
+                            HorizontalOptions="End"
+                            Text="01 Agosto 2024"
+                            TextColor="{DynamicResource OverImageTextColor}" />
+                    </Grid>
+                </Border>
+
+                <Border
+                    Margin="8,50,8,0"
+                    Padding="20"
+                    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                    StrokeShape="{RoundRectangle CornerRadius=20}"
+                    VerticalOptions="FillAndExpand">
+                    <Grid Margin="0,10" ColumnDefinitions="2*,2*">
+
+                        <StackLayout
+        Grid.Column="0"
+        HorizontalOptions="Center"
+        Spacing="5">
+
+                            <Border
+            Padding="5"
+            BackgroundColor="{DynamicResource BasePageColor}"
+            HeightRequest="60"
+            HorizontalOptions="Center"
+            Stroke="Transparent"
+            StrokeShape="{RoundRectangle CornerRadius='30'}"
+            TranslationY="0"
+            VerticalOptions="Center"
+            WidthRequest="60">
+                                <Label
+                FontFamily="MauiKitIcons"
+                FontSize="{OnIdiom Phone='30',
+                                   Tablet='35',
+                                   Desktop='30'}"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Opacity="1"
+                Text="{x:Static views:MauiKitIcons.PhoneForward}"
+                TextColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="CenterAndExpand" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Tigo_Clicked" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+
+                            </Border>
+                            <Label HorizontalOptions="Center" Text="Recargas Tigo" />
+                        </StackLayout>
+
+                        <StackLayout
+        Grid.Column="1"
+        HorizontalOptions="Center"
+        Spacing="5">
+
+                            <Border
+            Padding="5"
+            BackgroundColor="{DynamicResource BasePageColor}"
+            HeightRequest="60"
+            HorizontalOptions="Center"
+            Stroke="Transparent"
+            StrokeShape="{RoundRectangle CornerRadius='30'}"
+            TranslationY="0"
+            VerticalOptions="Center"
+            WidthRequest="60">
+                                <Label
+                FontFamily="MauiKitIcons"
+                FontSize="{OnIdiom Phone='30',
+                                   Tablet='35',
+                                   Desktop='30'}"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Opacity="1"
+                Text="{x:Static views:MauiKitIcons.PhoneForward}"
+                TextColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="CenterAndExpand" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Claro_Clicked" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Border>
+                            <Label HorizontalOptions="Center" Text="Recargas Claro" />
+                        </StackLayout>
+
+
+                    </Grid>
+                </Border>
+            </Grid>
+
+
+
+
+            <!--  Paid bills This month  -->
+            <Grid>
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="BoldFont"
+                    FontSize="16"
+                    Text="Historial de Recargas mobiles"
+                    TextColor="{DynamicResource BaseTextColor}" />
+
+            </Grid>
+
+            <CollectionView
+                x:Name="TransactionsCollectionView"
+                SelectionChangedCommand="{Binding TransactionDetailCommand}"
+                SelectionChangedCommandParameter="{Binding .}"
+                SelectionMode="Single"
+                VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="12" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                        <templates:TransactionItemTemplate />   
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

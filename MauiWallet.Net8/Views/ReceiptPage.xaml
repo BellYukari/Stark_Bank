@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiWallet.Views.ReceiptPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiWallet.Controls"
+    xmlns:helpers="clr-namespace:MauiWallet.Helpers"
+    xmlns:local="clr-namespace:MauiWallet"
+    xmlns:localization="clr-namespace:MauiWallet.Resources.Translations"
+    xmlns:models="clr-namespace:MauiWallet.Models"
+    xmlns:viewmodels="clr-namespace:MauiWallet.ViewModels"
+    xmlns:views="clr-namespace:MauiWallet.Views"
+    Title="{localization:Translate PageTitleEReceipt}">
+    <Grid
+        Padding="15,20"
+        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+        RowDefinitions="*, 60">
+
+        <VerticalStackLayout Spacing="20" VerticalOptions="StartAndExpand" x:Name="CaptureArea">
+            <!--  Avatar  -->
+            <controls:RoundedCornerImage
+                HeightRequest="150"
+                Source="iconostarbank.png"
+                StrokeShape="{RoundRectangle CornerRadius='0'}"
+                WidthRequest="150" />
+
+            <Border Padding="20,30" StrokeShape="{RoundRectangle CornerRadius=16}">
+                <Grid
+                    ColumnDefinitions="Auto, *"
+                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                    RowSpacing="15">
+
+                    <Label
+                        Grid.Row="0"
+                        Text="Monto de la transaccion"
+                        x:Name="entryLabelT"
+                        TextColor="{DynamicResource BaseLightTextColor}"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        HorizontalOptions="End"
+                        x:Name="entryMonto"
+                        Text="0.00"
+                        TextColor="{DynamicResource BaseTextColor}"
+                        VerticalOptions="Center" />
+
+                   
+                   
+
+                    
+
+                    <Label
+                        Grid.Row="4"
+                        Text="Fecha y hora"
+                        TextColor="{DynamicResource BaseLightTextColor}"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        HorizontalOptions="End"
+                        x:Name="entryDatetime"
+                        TextColor="{DynamicResource BaseTextColor}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Row="5"
+                        Text="{localization:Translate StringTransactionID}"
+                        TextColor="{DynamicResource BaseLightTextColor}"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        HorizontalOptions="End"
+                        x:Name="entryLabelNombre"
+                        TextColor="{DynamicResource BaseTextColor}"
+                        VerticalOptions="Center" />
+
+
+                    <Label
+                        Grid.Row="7"
+                        Text="{localization:Translate StringNote}"
+                        TextColor="{DynamicResource BaseLightTextColor}"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        HorizontalOptions="End"
+                        x:Name="entryNota"
+                        TextColor="{DynamicResource BaseTextColor}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Row="8"
+                        Text="{localization:Translate StringStatus}"
+                        TextColor="{DynamicResource BaseLightTextColor}"
+                        VerticalOptions="Center" />
+                    <Border
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        Padding="10,3"
+                        BackgroundColor="{DynamicResource PrimaryColor}"
+                        HorizontalOptions="End"
+                        Stroke="Transparent"
+                        StrokeShape="{RoundRectangle CornerRadius='8'}">
+                        <Label
+                            FontSize="12"
+                            HorizontalOptions="Center"
+                            Text="Completado"
+                            TextColor="{DynamicResource White}"
+                            VerticalOptions="Center" />
+                    </Border>
+                </Grid>
+            </Border>
+
+        </VerticalStackLayout>
+
+        <Button
+            Clicked="OnShareButtonClicked"
+            Grid.Row="1"
+            HeightRequest="50"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Text="Compartir"
+            VerticalOptions="End" />
+    </Grid>
+</ContentPage>
